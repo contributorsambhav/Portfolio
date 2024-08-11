@@ -29,8 +29,13 @@
    min-height: 100vh;
  }
  
- section.padding {
-   padding: 5rem 2rem; /* Adjusted for responsiveness */
+ 
+ 
+ /* Responsive padding adjustments */
+ @media (max-width: 768px) {
+   section.padding {
+     padding: 2rem 0; /* Remove left and right padding on smaller screens */
+   }
  }
  
  section img.background {
@@ -109,6 +114,13 @@
    margin: 20px auto;
  }
  
+ /* Responsive adjustments for container */
+ @media (max-width: 768px) {
+   .container {
+     margin: 0; /* Remove horizontal margin on smaller screens */
+   }
+ }
+ 
  .container .box {
    border-radius: 10px;
    border: 1px solid rgb(204, 204, 204);
@@ -176,52 +188,10 @@
  .content {
    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 6px 20px rgba(0, 0, 0, 0.1);
    border-radius: 8px; /* Optional: rounds the corners */
- }
- 
- /* Portfolio.css */
- .image-container {
-   width: 100%;
-   max-width: 300px;
-   margin-bottom: 2rem;
-   overflow: hidden;
-   border-radius: 8px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: relative;
-   transition: transform 0.3s ease;
- }
- 
- .project-image {
-   width: 100%;
-   border-radius: 8px;
-   transition: transform 0.3s ease;
- }
- 
- .image-container:hover {
-   transform: scale(1.2);
- }
- 
- /* Ensure these styles are in your styles.css file */
- .padding {
-   padding: 2rem; /* Adjust padding as needed */
- }
- 
- .background {
-   position: absolute;
-   top: 0;
-   left: 0;
-   width: 100%;
-   height: 100%;
-   object-fit: cover;
-   z-index: -1; /* Ensure background image stays behind the content */
- }
- 
- .content {
    position: relative;
    background-color: rgba(255, 255, 255, 0.6); /* White background with 60% opacity */
    backdrop-filter: blur(90%); /* Apply blur effect */
-   width: 90%; /* Adjusted for responsiveness */
+   width: 100%; /* Adjusted for responsiveness */
    max-width: 1200px; /* Limit max width */
    padding: 4rem;
    margin: 3rem auto;
@@ -229,6 +199,15 @@
    border-radius: 8px; /* Optional: Add rounded corners */
    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* White shadow with 10% opacity */
    transition: opacity 0.2s ease-in-out; /* Optional: Smooth transition */
+ }
+ 
+ /* Responsive adjustments for content */
+ @media (max-width: 768px) {
+   .content {
+     padding: 2rem;
+     width: 100%;
+     margin: 2rem 0; /* Remove horizontal margin on smaller screens */
+   }
  }
  
  .content.animate-in {
@@ -280,13 +259,7 @@
    p, .large, .small {
      font-size: 0.875rem;
    }
-   .padding {
-     padding: 2rem;
-   }
-   .content {
-     padding: 2rem;
-     width: 90%;
-   }
+   
  }
  
  @media (max-width: 480px) {
@@ -345,102 +318,115 @@
    color: white;
  }
  
-
  /* Base styles */
-
-.section-heading {
-  font-weight: bold;
-  font-size: 2rem; /* Adjust font size */
-  margin: 0;
-}
-
-.description {
-  font-size: 1.25rem; /* Adjust font size */
-  font-weight: 500;
-}
-
-.separator {
-  margin: 2rem 0;
-}
-
-.skills-list {
-  text-align: left;
-  columns: 2;
-  font-size: 1.25rem;
-  margin: 2rem 3rem;
-  gap: 3rem;
-  font-weight: 600;
-  list-style-type: none; /* Remove default list styling */
-  padding: 0;
-}
-
-.skill-item {
-  line-height: 1.7;
-}
-
-.detail-or-quote {
-  padding: 1rem 3rem 0;
-  font-weight: 400;
-}
-
-/* Responsive styles */
-
-@media (max-width: 1200px) {
-  .section-heading {
-    font-size: 1.75rem; /* Adjusted for responsiveness */
-  }
-  
-  .description {
-    font-size: 1.1rem; /* Adjusted for responsiveness */
-  }
-
-  
-}
-
+ 
+ .section-heading {
+   font-weight: bold;
+   font-size: 2rem; /* Adjust font size */
+   margin: 0;
+ }
+ 
+ .description {
+   font-size: 1.25rem; /* Adjust font size */
+   font-weight: 500;
+ }
+ 
+ .separator {
+   margin: 2rem 0;
+ }
+ 
+ .skills-list {
+   text-align: left;
+   columns: 2;
+   font-size: 1.25rem;
+   margin: 2rem 3rem;
+   gap: 3rem;
+   font-weight: 600;
+   list-style-type: none; /* Remove default list styling */
+   padding: 0;
+ }
+ 
+ .skill-item {
+   line-height: 1.7;
+ }
+ 
+ .detail-or-quote {
+   padding: 1rem 3rem 0;
+   font-weight: 400;
+ }
+ 
+ /* Responsive styles */
+ 
+ @media (max-width: 1200px) {
+   .section-heading {
+     font-size: 1.75rem; /* Adjusted for responsiveness */
+   }
+ 
+   .description {
+     font-size: 1.1rem; /* Adjusted for responsiveness */
+   }
+ }
+ 
+ @media (max-width: 768px) {
+   .section-heading {
+     font-size: 1.5rem; /* Adjusted for responsiveness */
+   }
+ 
+   .description {
+     font-size: 1rem; /* Adjusted for responsiveness */
+   }
+ 
+   .skills-list {
+     font-size: 1rem;
+     margin: 1rem; /* Adjust margins */
+   }
+ 
+   .detail-or-quote {
+     padding: 1rem;
+   }
+ }
+ 
+ @media (max-width: 480px) {
+   .section-heading {
+     font-size: 1.25rem; /* Adjusted for responsiveness */
+   }
+ 
+   .description {
+     font-size: 0.875rem; /* Adjusted for responsiveness */
+   }
+ 
+   .skills-list {
+     font-size: 0.875rem;
+     margin: 0.5rem; /* Adjust margins */
+     columns: 1; /* Stack skills list in one column on smaller screens */
+   }
+ 
+   .detail-or-quote {
+     padding: 0.5rem;
+   }
+ }
+ 
+ .portfolio-section {
+   background-image: url("./assets/2824536.jpg");
+ }
+ 
+ /* Ensure responsive padding and margins for the About section */
 @media (max-width: 768px) {
-  .section-heading {
-    font-size: 1.5rem; /* Adjusted for responsiveness */
+  .padding {
+    padding: 2rem 0; /* Remove left and right padding on smaller screens */
   }
-
-  .description {
-    font-size: 1rem; /* Adjusted for responsiveness */
-  }
-
-  .skills-list {
-    font-size: 1rem;
-    margin: 1rem; /* Adjust margins */
-  }
-
-  .detail-or-quote {
-    padding: 1rem;
+  #about {
+    margin: 0; /* Remove margins on smaller screens */
   }
 }
 
-@media (max-width: 480px) {
-  .section-heading {
-    font-size: 1.25rem; /* Adjusted for responsiveness */
-  }
 
-  .description {
-    font-size: 0.875rem; /* Adjusted for responsiveness */
-  }
-
-  .skills-list {
-    font-size: 0.875rem;
-    margin: 0.5rem; /* Adjust margins */
-  }
-
-  .detail-or-quote {
-    padding: 0.5rem;
-  }
-  .skills-list {
-    font-size: 1.1rem;
-    columns: 1; /* Stack skills list in one column on smaller screens */
-    margin: 2rem 1rem; /* Adjust margins */
+/* Add responsive styles for the About section */
+@media (max-width: 768px) {
+  #about {
+    width: 100vw; /* Ensure the section takes full width on smaller screens */
+    padding: 0; /* Optional: Adjust padding if needed */
   }
 }
 
-.portfolio-section{
-  background-image: url("./assets/2824536.jpg");
-}
 

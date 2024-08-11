@@ -29,7 +29,7 @@ I thrive on challenges and complex tasks, constantly seeking to innovate and imp
 ✨ I'm also deeply fascinated by the realms of Fintech, Geopolitics, and Investing, constantly exploring new horizons within these fields.`
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   const handleScroll = () => {
     const element = document.getElementById("about");
@@ -40,7 +40,7 @@ const About = () => {
     if (rect.top <= windowHeight && rect.bottom >= 0) {
       setIsVisible(true);
     } else {
-      setIsVisible(false);
+      setIsVisible(true);
     }
   };
 
@@ -54,7 +54,10 @@ const About = () => {
   }, []);
 
   return (
-    <section className="padding" id="about">
+    <section style={{
+      paddingTop: "10vh",
+      paddingBottom: "10vh"
+    }} className="zero" id="about">
       <img className="background" src={image} alt={imageAltText} />
       <div className={`content ${isVisible ? "animate-in" : ""}`}>
         <h2 className="section-heading">About Myself</h2>

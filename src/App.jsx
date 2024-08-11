@@ -38,7 +38,7 @@ const secondaryColor = "#D2F1E4";
 
 const App = () => {
   return (
-    <div id="main">
+    <div id="">
       <Header />
       <Home name={siteProps.name} title={siteProps.title} />
       <About />
