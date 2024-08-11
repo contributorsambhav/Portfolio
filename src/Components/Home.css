@@ -1,0 +1,36 @@
+/* Home.css */
+.home-section {
+  position: relative;
+  height: 100vh; /* Set the height to 60vh */
+  overflow: hidden; /* Hide overflow to ensure images stay within the section */
+  background-image: url("../assets/2824536.jpg");
+}
+
+.floating-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Ensure the images container covers the entire section */
+    z-index: 1;
+    pointer-events: none; /* Ensures images don't interfere with clicks */
+    overflow: hidden; /* Hide overflow in case images exceed boundaries */
+  }
+  
+
+.floating-image {
+    box-shadow: 5 5 15px 5px rgba(255, 255, 255, 0.5); /* White shadow with 50% opacity */
+
+  position: absolute;
+  width: 10vw; /* Adjust the width as needed */
+  height: 10vw; /* Adjust the height as needed */
+  object-fit: contain;
+}
+
+.text-container {
+  position: relative;
+  margin-top: 6vh;
+  color: beige;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6); /* Add shadow with offset, blur, and color */
+  font-family: "Arial", sans-serif; /* Adjust font family if needed */
+}

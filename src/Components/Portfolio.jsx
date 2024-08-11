@@ -1,86 +1,115 @@
-/**
- * Portfolio component
- *
- * Highlights some of  your creations. These can be designs, websites,
- * open source contributions, articles you've written and more.
- *
- * This is a great area for you to to continually add to and refine
- * as you continue to learn and create.
- */
+import React, { useEffect, useState } from "react";
+import CleanerImage from "../assets/Cleaner.png";
+import ChessImage from "../assets/Chess.png";
+import DocImage from "../assets/Doc.png";
+import starry from "../assets/2824536.jpg";
 
-import React from "react";
-
-/**
- * Desk image
- *
- * Below is a sample desk image. Feel free to update this to an image of your choice,
- * updating below imageAltText to string that represents what you see in that image.
- *
- * Need an image? Check out https://unsplash.com to download a photo you
- * freely use on your site.
- */
-import image from "../images/design-desk.jpeg";
-
-const imageAltText = "desktop with books and laptop";
-
-/**
- * Project list
- *
- * An array of objects that will be used to display for your project
- * links section. Below is a sample, update to reflect links you'd like to highlight.
- */
 const projectList = [
   {
-    title: "10 Things To Know About Azure Static Web Apps 🎉",
+    title: "Chess Master",
     description:
-      "Collaboration to create a beginner friendly article to help explain Azure Static Web Apps and tooling to get started.",
-    url: "https://dev.to/azure/10-things-to-know-about-azure-static-web-apps-3n4i",
+      "Developed a dynamic chess application using the MERN stack, WebSockets, and FEN. The app integrates chessboard.js and Chess.js libraries for interactive gameplay and Tailwind CSS for sleek styling. Enjoy real-time updates and seamless multiplayer matches on a robust platform designed for chess enthusiasts.",
+    tools: ["MERN Stack", "WebSockets", "Tailwind", "Redux", "JWT", "bcrypt.js"],
+    url: "https://github.com/contributorsambhav/ReactChess",
+    deploymentUrl: "https://reactchess.onrender.com/",
+    image: ChessImage // Image for Chess Master project
   },
   {
-    title: "Web Development for Beginners",
+    title: "DocuSharp",
     description:
-      "Contributed sketch note imagery to accompany each lesson. These help provide visual representation of what is being taught.",
-    url: "https://github.com/microsoft/web-dev-for-beginners",
+      "Developed a platform designed to bridge the documentation gap! DocuSharp enables developers to share concise intros and curated resources for various programming languages. Built with React.js, Redux Toolkit, Appwrite, and Tailwind CSS, it offers real-time editing with TinyMCE.",
+    tools: ["React.js", "Redux", "Appwrite", "Tailwind", "TinyMCE"],
+    url: "https://github.com/contributorsambhav/BLOG-Using-React-Redux-Appwrite-for-Backend",
+    deploymentUrl: "https://docusharp.vercel.app",
+    image: DocImage // Image for DocuSharp project
   },
   {
-    title: "My Resume Site",
+    title: "CleanUpNow",
     description:
-      "Created from Microsoft's resume workshop and deployed to GitHub pages. Includes my experience and design abilities.",
-    url: "https://github.com/microsoft/workshop-library/tree/main/full/build-resume-website",
-  },
-  {
-    title: "GitHub Codespaces and github.dev",
-    description:
-      "Video interview to explain when to use GitHub.dev versus GitHub Codespaces, and how best to use each tool.",
-    url: "https://www.youtube.com/watch?v=c3hHhRME_XI",
-  },
+      "Developed at Electrothon, this trash tracking app uses OpenCV for garbage detection in crowd images. It identifies the nearest municipality to streamline waste management. Designed to foster community responsibility and awareness, CleanUpNow aims to make a positive impact through innovative technology!",
+    tools: ["MERN Stack", "Tailwind", "OpenCV"],
+    url: "https://github.com/contributorsambhav/trashtrack",
+    deploymentUrl: "https://github.com/contributorsambhav/trashtrack",
+    image: CleanerImage // Image for CleanUpNow project
+  }
 ];
 
 const Portfolio = () => {
+  const [isWideScreen, setIsWideScreen] = useState(window.innerWidth > 1024);
+
+  const handleResize = () => {
+    setIsWideScreen(window.innerWidth > 1024);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <section className="padding" id="portfolio">
-      <h2 style={{ textAlign: "center" }}>Portfolio</h2>
+    <section className="padding portfolio-section" id="portfolio">
+      <h2 style={{ textAlign: "center", color: "white" }}>Portfolio</h2>
       <div style={{ display: "flex", flexDirection: "row", paddingTop: "3rem" }}>
-        <div style={{ maxWidth: "40%", alignSelf: "center" }}>
-          <img
-            src={image}
-            style={{ height: "90%", width: "100%", objectFit: "cover" }}
-            alt={imageAltText}
-          />
-        </div>
-        <div className="container">
-          {projectList.map((project) => (
-            <div className="box" key={project.title}>
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                <h3 style={{ flexBasis: "40px" }}>{project.title}</h3>
+        {/* Conditionally render images based on screen width */}
+        {isWideScreen && (
+          <div style={{ flex: "1", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
+            {projectList.map((project) => (
+              <a href={project.deploymentUrl} key={project.title} target="_blank" rel="noopener noreferrer" className="image-container">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="project-image"
+                />
               </a>
-              <p className="small">{project.description}</p>
+            ))}
+          </div>
+        )}
+
+        {/* Project Cards Container */}
+        <div style={{ flex: "2", display: "flex", flexDirection: "column", paddingLeft: "2rem" }}>
+          {projectList.map((project) => (
+            <div className="card" key={project.title} style={cardStyle}>
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
+                <h3 style={{ fontWeight: "600", fontSize: "1.8rem", marginBottom: "1.5rem", color: "white" }}>{project.title}</h3>
+              </a>
+              <p style={{ fontSize: "1.2rem", fontWeight: "500", marginBottom: "1.5rem", color: "white" }}>{project.description}</p>
+              <p style={{ fontSize: "1.2rem", fontWeight: "500", marginBottom: "1.5rem", fontStyle: "italic", color: "white" }}>
+                Tools Used: {project.tools.join(", ")}
+              </p>
+              {(project.title !== "CleanUpNow") &&
+                <a className="socialIcon" href={project.deploymentUrl} target="_blank" rel="noopener noreferrer" style={linkStyle}>
+                  View Deployment
+                </a>
+              }
             </div>
           ))}
         </div>
       </div>
     </section>
   );
+};
+
+// Inline styles for card and link
+const cardStyle = {
+  backgroundColor: "#2d3748",  // White background
+  borderRadius: "8px",          // Rounded corners
+  boxShadow: "0 10px 15px rgba(29, 78, 216, 0.5)",  // Larger shadow with blue tint
+  padding: "2rem",              // Padding inside the card
+  marginBottom: "3rem",         // Space between cards
+  textAlign: "left",            // Align text to the left
+  color: "white",               // Text color (white)
+  width: "75%",                 // Set the card width to 75%
+  opacity: 0.9
+};
+
+const linkStyle = {
+  display: "inline-block",
+  marginTop: "1rem",
+  color: "white",
+  textDecoration: "none",
+  fontWeight: "semibold"
 };
 
 export default Portfolio;

@@ -1,125 +1,446 @@
 /**
-* CSS file to hold styles that apply across the application
-*/
+ * CSS file to hold styles that apply across the application
+ */
 
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400;600;800&display=swap");
+ @import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@200;400;600;800&display=swap");
 
-html,
-body {
-  font-family: "Montserrat", sans-serif;
-  height: 100%;
+ html,
+ body {
+   font-family: "Montserrat", sans-serif;
+   height: 100%;
+   margin: 0;
+   overflow-x: hidden;
+   padding: 0;
+   width: 100%;
+ }
+ 
+ div#main {
+   display: flex;
+   flex-direction: column;
+   width: 100vw;
+ }
+ 
+ section {
+   position: relative;
+   width: 100vw;
+ }
+ 
+ section.min-height {
+   min-height: 100vh;
+ }
+ 
+ section.padding {
+   padding: 5rem 2rem; /* Adjusted for responsiveness */
+ }
+ 
+ section img.background {
+   height: 100%;
+   left: 50%;
+   object-fit: cover;
+   pointer-events: none;
+   position: absolute;
+   top: 0;
+   transform: translate(-50%, 0);
+   width: 100%;
+   z-index: -1;
+ }
+ 
+ h1 {
+   font-family: "Cormorant Garamond", serif;
+   font-size: 4rem; /* Adjusted for responsiveness */
+   font-weight: 400;
+   line-height: 1.2;
+   margin: 0;
+ }
+ 
+ h2 {
+   font-size: 1.5rem; /* Adjusted for responsiveness */
+   font-weight: 400;
+   margin: 0;
+   padding-top: 1rem;
+ }
+ 
+ h3 {
+   font-weight: 400;
+   font-size: 1rem; /* Adjusted for responsiveness */
+   margin: 0;
+ }
+ 
+ p {
+   font-size: 16px; /* Adjusted for responsiveness */
+   line-height: 1.5;
+   margin-bottom: 0;
+   font-weight: 300;
+ }
+ 
+ p.large {
+   font-size: 1.5rem; /* Adjusted for responsiveness */
+ }
+ 
+ p.small {
+   font-size: 14px; /* Adjusted for responsiveness */
+ }
+ 
+ hr {
+   margin: 2rem 0;
+ }
+ 
+ li {
+   line-height: 1.7;
+ }
+ 
+ li::marker {
+   color: #4e567e;
+ }
+ 
+ a {
+   color: black;
+   text-decoration: none;
+ }
+ 
+ a:hover {
+   color: #4e567e;
+ }
+ 
+ .container {
+   display: grid;
+   grid-gap: 20px;
+   grid-template-columns: 1fr 1fr;
+   margin: 20px auto;
+ }
+ 
+ .container .box {
+   border-radius: 10px;
+   border: 1px solid rgb(204, 204, 204);
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   padding: 24px 16px;
+   text-align: center;
+ }
+ 
+ img.socialIcon {
+   height: 30px;
+   width: 30px;
+ }
+ 
+ html {
+   scroll-behavior: smooth;
+ }
+ 
+ /* Define the slideInDown animation */
+ @keyframes slideInDown {
+   0% {
+     transform: translateY(-100%);
+     opacity: 0;
+   }
+   100% {
+     transform: translateY(0);
+     opacity: 1;
+   }
+ }
+ 
+ /* Apply the animation to the image */
+ .slide-in {
+   animation: slideInDown 1s ease-out;
+ }
+ 
+ /* Define keyframes for fade-in and slide-up animation */
+ @keyframes slideUpFadeIn {
+   from {
+     opacity: 0;
+     transform: translateY(50px); /* Starts below its original position */
+   }
+   to {
+     opacity: 1;
+     transform: translateY(0); /* Ends at its original position */
+   }
+ }
+ 
+ /* Apply the animation to the about section */
+ .animate-in {
+   animation: slideUpFadeIn 1s ease-out;
+ }
+ 
+ /* Ensure the container for Lottie is full screen and correctly positioned */
+ .lottie-container {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   z-index: 0; /* Ensure it's behind the content */
+   overflow: hidden;
+ }
+ 
+ .content {
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1), 0px 6px 20px rgba(0, 0, 0, 0.1);
+   border-radius: 8px; /* Optional: rounds the corners */
+ }
+ 
+ /* Portfolio.css */
+ .image-container {
+   width: 100%;
+   max-width: 300px;
+   margin-bottom: 2rem;
+   overflow: hidden;
+   border-radius: 8px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   transition: transform 0.3s ease;
+ }
+ 
+ .project-image {
+   width: 100%;
+   border-radius: 8px;
+   transition: transform 0.3s ease;
+ }
+ 
+ .image-container:hover {
+   transform: scale(1.2);
+ }
+ 
+ /* Ensure these styles are in your styles.css file */
+ .padding {
+   padding: 2rem; /* Adjust padding as needed */
+ }
+ 
+ .background {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   z-index: -1; /* Ensure background image stays behind the content */
+ }
+ 
+ .content {
+   position: relative;
+   background-color: rgba(255, 255, 255, 0.6); /* White background with 60% opacity */
+   backdrop-filter: blur(90%); /* Apply blur effect */
+   width: 90%; /* Adjusted for responsiveness */
+   max-width: 1200px; /* Limit max width */
+   padding: 4rem;
+   margin: 3rem auto;
+   text-align: center;
+   border-radius: 8px; /* Optional: Add rounded corners */
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* White shadow with 10% opacity */
+   transition: opacity 0.2s ease-in-out; /* Optional: Smooth transition */
+ }
+ 
+ .content.animate-in {
+   opacity: 1; /* Ensure element is visible when animation is triggered */
+ }
+ 
+ .content {
+   opacity: 0; /* Start as hidden */
+ }
+ 
+ /* Ensure the list styling remains intact */
+ .large {
+   font-size: 1.25rem;
+ }
+ 
+ hr {
+   margin: 2rem 0; /* Adjust margins as needed */
+ }
+ 
+ /* Responsive styles */
+ @media (max-width: 1200px) {
+   h1 {
+     font-size: 5rem;
+   }
+   h2 {
+     font-size: 1.25rem;
+   }
+   h3 {
+     font-size: 0.875rem;
+   }
+   p, .large, .small {
+     font-size: 1rem;
+   }
+   .container {
+     grid-template-columns: 1fr;
+   }
+ }
+ 
+ @media (max-width: 768px) {
+   h1 {
+     font-size: 3rem;
+   }
+   h2 {
+     font-size: 1rem;
+   }
+   h3 {
+     font-size: 0.75rem;
+   }
+   p, .large, .small {
+     font-size: 0.875rem;
+   }
+   .padding {
+     padding: 2rem;
+   }
+   .content {
+     padding: 2rem;
+     width: 90%;
+   }
+ }
+ 
+ @media (max-width: 480px) {
+   h1 {
+     font-size: 2rem;
+   }
+   h2 {
+     font-size: 0.875rem;
+   }
+   h3 {
+     font-size: 0.625rem;
+   }
+   p, .large, .small {
+     font-size: 0.75rem;
+   }
+   .container {
+     grid-template-columns: 1fr;
+   }
+   .image-container {
+     max-width: 100%;
+   }
+   .socialIcon {
+     width: 20px;
+     height: 20px;
+   }
+ }
+ 
+ #footer {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 2.5rem;
+   padding: 5rem 2rem 3rem;
+   background-color: #2C3E50; /* Darker shade */
+   width: 100vw;
+ }
+ 
+ .socialIcon {
+   width: 24px; /* Adjust size as needed */
+   height: 24px; /* Adjust size as needed */
+ }
+ 
+ .small {
+   color: white;
+   margin-top: 0;
+ }
+ 
+ .nav-link {
+   color: white; /* Make the text white */
+   text-decoration: none; /* Remove underline from links */
+   transition: transform 0.3s ease; /* Smooth transition for scaling */
+ }
+ 
+ .nav-link:hover {
+   transform: scale(1.25); /* Scale up to 125% on hover */
+   color: white;
+ }
+ 
+
+ /* Base styles */
+
+.section-heading {
+  font-weight: bold;
+  font-size: 2rem; /* Adjust font size */
   margin: 0;
-  overflow-x: hidden;
-  padding: 0;
-  width: 100%;
 }
 
-div#main {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
+.description {
+  font-size: 1.25rem; /* Adjust font size */
+  font-weight: 500;
 }
 
-section {
-  position: relative;
-  width: 100vw;
+.separator {
+  margin: 2rem 0;
 }
 
-section.min-height {
-  min-height: 100vh;
-}
-
-section.padding {
-  padding: 5rem 0;
-}
-
-section img.background {
-  height: 100%;
-  left: 50%;
-  object-fit: cover;
-  pointer-events: none;
-  position: absolute;
-  top: 0;
-  transform: translate(-50%, 0);
-  width: 100vmax;
-  z-index: -1;
-}
-
-h1 {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 7rem;
-  font-weight: 400;
-  line-height: 0.8;
-  margin: 0;
-}
-
-h2 {
-  font-size: 2rem;
-  font-weight: 400;
-  margin: 0;
-  padding-top: 1rem;
-}
-
-h3 {
-  font-weight: 400;
+.skills-list {
+  text-align: left;
+  columns: 2;
   font-size: 1.25rem;
-  margin: 0;
+  margin: 2rem 3rem;
+  gap: 3rem;
+  font-weight: 600;
+  list-style-type: none; /* Remove default list styling */
+  padding: 0;
 }
 
-p {
-  font-size: 18px;
-  line-height: 1.5;
-  margin-bottom: 0;
-  font-weight: 300;
-}
-
-p.large {
-  font-size: 24px;
-}
-
-p.small {
-  font-size: 15px;
-}
-
-hr {
-  margin: 2.5rem;
-}
-
-li {
+.skill-item {
   line-height: 1.7;
 }
 
-li::marker {
-  color: #4e567e;
+.detail-or-quote {
+  padding: 1rem 3rem 0;
+  font-weight: 400;
 }
 
-a {
-  color: black;
-  text-decoration: none;
+/* Responsive styles */
+
+@media (max-width: 1200px) {
+  .section-heading {
+    font-size: 1.75rem; /* Adjusted for responsiveness */
+  }
+  
+  .description {
+    font-size: 1.1rem; /* Adjusted for responsiveness */
+  }
+
+  
 }
 
-a:hover {
-  color: #4e567e;
+@media (max-width: 768px) {
+  .section-heading {
+    font-size: 1.5rem; /* Adjusted for responsiveness */
+  }
+
+  .description {
+    font-size: 1rem; /* Adjusted for responsiveness */
+  }
+
+  .skills-list {
+    font-size: 1rem;
+    margin: 1rem; /* Adjust margins */
+  }
+
+  .detail-or-quote {
+    padding: 1rem;
+  }
 }
 
-.container {
-  display: grid;
-  grid-gap: 20px;
-  grid-template-columns: 330px 300px;
-  margin: 20px auto;
+@media (max-width: 480px) {
+  .section-heading {
+    font-size: 1.25rem; /* Adjusted for responsiveness */
+  }
+
+  .description {
+    font-size: 0.875rem; /* Adjusted for responsiveness */
+  }
+
+  .skills-list {
+    font-size: 0.875rem;
+    margin: 0.5rem; /* Adjust margins */
+  }
+
+  .detail-or-quote {
+    padding: 0.5rem;
+  }
+  .skills-list {
+    font-size: 1.1rem;
+    columns: 1; /* Stack skills list in one column on smaller screens */
+    margin: 2rem 1rem; /* Adjust margins */
+  }
 }
 
-.container .box {
-  border-radius: 10px;
-  border: 1px solid rgb(204, 204, 204);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding: 24px 16px;
-  text-align: center;
+.portfolio-section{
+  background-image: url("./assets/2824536.jpg");
 }
 
-img.socialIcon {
-  height: 30px;
-  width: 30px;
-}

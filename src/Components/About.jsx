@@ -1,83 +1,72 @@
-/**
- * About component
- *
- * Space for you to describe more about yourself.
- */
-
-import React from "react";
-
-/**
- * About background image
- *
- * Below is a sample image. Upload the image of your choice into the "images"
- * directory and import here for use. Then, set imageAltText to string that 
- * represents what you see in that image.
- *
- * Need an image? Check out https://unsplash.com to download a image you
- * freely use on your site.
- */
-import image from "../images/motion-background.jpg";
+import React, { useEffect, useState } from "react";
+import image from "../assets/2824536.jpg";
+import "../styles.css"; // Ensure this path is correct
 
 const imageAltText = "purple and blue abstract background";
 
-/**
- * Sort description that expands on your title on the Home component.
- */
 const description =
-  "I'm a UI/UX student studying at Barnett Technical University. I enjoy creating unique and simplistic user interfaces in creative ways.";
+  "I'm Sambhav, a B.Tech. student at NIT Hamirpur, specializing in Mathematics and Computing. Skilled in JavaScript and MERN Stack.";
 
-/**
- * List of some of skills or technologies you work on, are learning,
- * passionate about, or enjoy,
- */
 const skillsList = [
-  "Web design",
-  "User experience",
-  "Inclusive design",
-  "Focus group testing",
-  "Mobile user interfaces",
-  "Graphic design",
+  "React js",
+  "Node js",
+  "Express js",
+  "Redux js",
+  "Mongo DB",
+  "JavaScript",
+  "Tailwind CSS",
+  "Socket.IO",
+  "Git/Github",
+  "JWT/Bcrypt",
+  "CSS",
+  "HTML"
 ];
 
-/**
- * Use this to give more information about what you are passionate about,
- * how you best work, or even a quote. This will help someone learn more
- * about you on a professional level.
- */
-const detailOrQuote =
-  "I am passionate about solving problems in new creative ways to drive innovation. By leveraging my UI/UX experience I continually look for new and better ways to make tech accessible by all.";
+const detailOrQuote = `. My passion lies in leveraging technology to solve real-world problems and create practical tools that enhance everyday experiences.
+
+I thrive on challenges and complex tasks, constantly seeking to innovate and improve. I believe that the essence of a successful project lies in understanding user needs and creating intuitive solutions.
+
+✨ I'm also deeply fascinated by the realms of Fintech, Geopolitics, and Investing, constantly exploring new horizons within these fields.`
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleScroll = () => {
+    const element = document.getElementById("about");
+    const rect = element.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    // Check if the element is in the viewport
+    if (rect.top <= windowHeight && rect.bottom >= 0) {
+      setIsVisible(true);
+    } else {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check visibility on initial render
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <section className="padding" id="about">
       <img className="background" src={image} alt={imageAltText} />
-      <div
-        style={{
-          backgroundColor: "white",
-          width: "50%",
-          padding: "4rem",
-          margin: "3rem auto",
-          textAlign: "center",
-        }}
-      >
-        <h2>About Myself</h2>
-        <p className="large">{description}</p>
-        <hr />
-        <ul
-          style={{
-            textAlign: "left",
-            columns: 2,
-            fontSize: "1.25rem",
-            margin: "2rem 3rem",
-            gap: "3rem",
-          }}
-        >
+      <div className={`content ${isVisible ? "animate-in" : ""}`}>
+        <h2 className="section-heading">About Myself</h2>
+        <p className="description">{description}</p>
+        <hr className="separator" />
+        <ul className="skills-list">
           {skillsList.map((skill) => (
-            <li key={skill}>{skill}</li>
+            <li key={skill} className="skill-item">{skill}</li>
           ))}
         </ul>
-        <hr />
-        <p style={{ padding: "1rem 3rem 0" }}>{detailOrQuote}</p>
+        <hr className="separator" />
+        <p className="detail-or-quote">{detailOrQuote}</p>
       </div>
     </section>
   );
