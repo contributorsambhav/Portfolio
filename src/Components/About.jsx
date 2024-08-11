@@ -56,8 +56,9 @@ const About = () => {
   return (
     <section style={{
       paddingTop: "10vh",
-      paddingBottom: "10vh"
-    }} className="zero" id="about">
+      paddingBottom: "10vh",
+      
+    }} className="" id="about">
       <img className="background" src={image} alt={imageAltText} />
       <div className={`content ${isVisible ? "animate-in" : ""}`}>
         <h2 className="section-heading">About Myself</h2>

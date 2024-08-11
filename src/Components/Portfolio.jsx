@@ -60,7 +60,7 @@ const Portfolio = () => {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="project-image"
+                  className="project-image ImagesocialIcon"
                 />
               </a>
             ))}

@@ -191,7 +191,7 @@
    position: relative;
    background-color: rgba(255, 255, 255, 0.6); /* White background with 60% opacity */
    backdrop-filter: blur(90%); /* Apply blur effect */
-   width: 100%; /* Adjusted for responsiveness */
+   width: 80%; /* Adjusted for responsiveness */
    max-width: 1200px; /* Limit max width */
    padding: 4rem;
    margin: 3rem auto;
@@ -424,9 +424,35 @@
 /* Add responsive styles for the About section */
 @media (max-width: 768px) {
   #about {
-    width: 100vw; /* Ensure the section takes full width on smaller screens */
+    width: 80vw; /* Ensure the section takes full width on smaller screens */
     padding: 0; /* Optional: Adjust padding if needed */
   }
 }
 
+.socialIcon {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  transform: scale(1.25); /* Scale the icon by 25% */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
 
+.socialIcon:hover {
+  transform: scale(1.5); /* Enlarge further on hover */
+}
+
+
+.ImagesocialIcon {
+  width: 25vh; /* Adjust size as needed */
+  height: 25vh; /* Adjust size as needed */
+  transform: scale(1.25); /* Scale the icon by 25% */
+  transition: transform 0.3s ease; /* Smooth transition */
+  margin-bottom: 12vh;
+}
+
+.ImagesocialIcon:hover {
+  transform: scale(1.5); /* Enlarge further on hover */
+}
+
+#main{
+  background-image: url("./assets/2824536.jpg");
+}
